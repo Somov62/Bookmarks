@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Bookmarks.Views.ImportPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Меню импорта"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    >
+    <StackLayout>
+
+        <Frame
+            BackgroundColor="{DynamicResource MainColor}"
+            Margin="20"
+            Padding="0"
+            CornerRadius="10"
+            >
+            <Frame
+                BackgroundColor="{DynamicResource PageBackgroundColor}"
+                Margin="5"
+                Padding="10"
+                HasShadow="False"
+                CornerRadius="8"
+                >
+                <StackLayout
+                    Padding="20,10"
+                    Spacing="20"
+                    >
+                    <Label
+                        Text="Автоматический импорт из Яндекс Браузера &#10;(требуются рут-права)"
+                        TextColor="{DynamicResource PageForegroundColor}"
+                        FontSize="20"
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="WordWrap"
+                        HorizontalOptions="Center"
+                        />
+
+                    <Button
+                        x:Name="btnImportYb"
+                        Text="Импорт"
+                        TextColor="{DynamicResource ButtonForegroundColor}"
+                        FontSize="20"
+                        Clicked="ImportFromYB_Clicked"
+                        >
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Disabled">
+                                    <VisualState.Setters>
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="BorderColor" Value="{DynamicResource MainColor}" />
+                                        <Setter Property="BorderWidth" Value="2" />
+                                        <Setter Property="TextColor" Value="{DynamicResource PageForegroundColor}" />
+                                        <Setter Property="Text" Value="Выполняем..." />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="Background" Value="{DynamicResource MainColor}" />
+                                        <Setter Property="BorderWidth" Value="0" />
+                                        <Setter Property="TextColor" Value="{DynamicResource ButtonForegroundColor}" />
+                                        <Setter Property="Text" Value="Импорт" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Button>
+                </StackLayout>
+            </Frame>
+        </Frame>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    x:Class="Bookmarks.Themes.LightTheme"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    >
+    <Color x:Key="MainColor">#70cf8a</Color>
+
+    <Color x:Key="NavBarColor">#EFFAF2</Color>
+    <Color x:Key="StatusBarColor">#5CA871</Color>
+
+    <Color x:Key="BarBackgroundColor">#70cf8a</Color>
+    <Color x:Key="BarTextColor">White</Color>
+
+    <Color x:Key="PageBackgroundColor">#EFFAF2</Color>
+    <Color x:Key="PageForegroundColor">Black</Color>
+
+    <Color x:Key="ListViewBackgroundColor">White</Color>
+    <Color x:Key="ListViewForegroundColor">Black</Color>
+    <Color x:Key="ListViewForegroundSecondaryColor">#666666</Color>
+    <Color x:Key="ListViewSeparatorColor">#70cf8a</Color>
+    <Color x:Key="ListViewPressedBackgroundColor">#5570cf8a</Color>
+
+    <Color x:Key="PopupBackgroundColor">White</Color>
+    <Color x:Key="PopupForegroundColor">Black</Color>
+
+    <Color x:Key="ButtonBackgroundColor">#70cf8a</Color>
+    <Color x:Key="ButtonForegroundColor">White</Color>
+    <Color x:Key="ButtonDeleteColor">#B00020</Color>
+
+    <Color x:Key="EntryPlaceholderColor">#666666</Color>
+
+    <Color x:Key="WebViewStatusBarColor">Black</Color>
+</ResourceDictionary>

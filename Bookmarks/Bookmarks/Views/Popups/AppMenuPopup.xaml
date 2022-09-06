@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup
+    x:Class="Bookmarks.Views.Popups.AppMenuPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:converters="clr-namespace:Bookmarks.Converters"
+    Size="300, 270"
+    Color="Transparent"
+    >
+    <xct:Popup.Resources>
+        <converters:ThemeNameConverter x:Key="ThemeNameConverter" />
+    </xct:Popup.Resources>
+    <Frame
+        BackgroundColor="{DynamicResource PopupBackgroundColor}"
+        Padding="20"
+        HasShadow="True"
+        CornerRadius="20"
+        >
+
+        <StackLayout VerticalOptions="StartAndExpand">
+            <Label
+                Text="Меню"
+                TextColor="{DynamicResource PopupForegroundColor}"
+                FontSize="24"
+                Margin="5,0,5,0"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="Center"
+                VerticalOptions="Start"
+                />
+
+            <Frame
+                BackgroundColor="{DynamicResource MainColor}"
+                Margin="0"
+                Padding="0"
+                HasShadow="False"
+                HeightRequest="3"
+                CornerRadius="5"
+                />
+
+
+            <Label
+                Text="Тема:"
+                TextColor="{DynamicResource PopupForegroundColor}"
+                FontSize="20"
+                Margin="5,10,5,0"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                />
+
+            <Button
+                Text="{Binding ThemeName, Converter={StaticResource ThemeNameConverter}}"
+                FontSize="20"
+                VerticalOptions="End"
+                HorizontalOptions="FillAndExpand"
+                Clicked="ChangeTheme_Click"
+                />
+
+            <Label
+                Text="Закладки:"
+                TextColor="{DynamicResource PopupForegroundColor}"
+                FontSize="20"
+                Margin="5,10,5,0"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                />
+
+            <Button
+                Text="Импорт закладок"
+                FontSize="20"
+                VerticalOptions="End"
+                HorizontalOptions="FillAndExpand"
+                Clicked="OpenImport_Click"
+                />
+
+        </StackLayout>
+    </Frame>
+</xct:Popup>

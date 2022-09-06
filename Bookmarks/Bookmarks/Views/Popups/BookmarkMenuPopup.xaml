@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup
+    x:Class="Bookmarks.Views.Popups.BookmarkMenuPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:controls="clr-namespace:Bookmarks.Controls"
+    Size="300, 500"
+    VerticalOptions="Center"
+    Color="Transparent"
+    >
+    <Frame
+        BackgroundColor="{DynamicResource PopupBackgroundColor}"
+        Padding="20"
+        HasShadow="True"
+        CornerRadius="20"
+        >
+
+        <StackLayout VerticalOptions="FillAndExpand">
+            <StackLayout
+                x:Name="bookmarkBinding"
+                VerticalOptions="StartAndExpand"
+                >
+
+                <Label
+                    Text="Название закладки:"
+                    TextColor="{DynamicResource PopupForegroundColor}"
+                    FontSize="26"
+                    Margin="5,0,5,0"
+                    HorizontalOptions="Start"
+                    VerticalOptions="StartAndExpand"
+                    />
+                <controls:CustomEntry
+                    x:Name="txtBookmarkName"
+                    Text="{Binding Name, Mode=TwoWay}"
+                    Placeholder="краткость - сестра таланта"
+                    HeightRequest="80"
+                    AutoSize="TextChanges"
+                    Style="{StaticResource EntryStyle}"
+                    />
+                <Label
+                    Text="Ссылка:"
+                    TextColor="{DynamicResource PopupForegroundColor}"
+                    FontSize="26"
+                    Margin="5,0,5,0"
+                    HorizontalOptions="Start"
+                    VerticalOptions="StartAndExpand"
+                    />
+                <controls:CustomEntry
+                    x:Name="txtBookmarkUrl"
+                    Text="{Binding Url, Mode=TwoWay}"
+                    Placeholder="без ссылки никак"
+                    HeightRequest="80"
+                    AutoSize="TextChanges"
+                    Style="{StaticResource EntryStyle}"
+                    />
+            </StackLayout>
+
+            <Button
+                x:Name="btnReplace"
+                Text="Переместить"
+                FontSize="20"
+                VerticalOptions="End"
+                HorizontalOptions="FillAndExpand"
+                Clicked="ChangeFolder_Clicked"
+                />
+
+            <Button
+                Text="Сохранить"
+                FontSize="20"
+                Margin="0,5,0,0"
+                VerticalOptions="End"
+                HorizontalOptions="FillAndExpand"
+                Clicked="Save_Clicked"
+                />
+
+            <Button
+                x:Name="btnDelete"
+                Text="Удалить закладку"
+                BackgroundColor="{DynamicResource ButtonDeleteColor}"
+                FontSize="20"
+                Margin="0,5,0,0"
+                VerticalOptions="End"
+                HorizontalOptions="FillAndExpand"
+                Clicked="Delete_Click"
+                />
+        </StackLayout>
+    </Frame>
+</xct:Popup>

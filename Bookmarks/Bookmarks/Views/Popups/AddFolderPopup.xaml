@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup
+    x:Class="Bookmarks.Views.Popups.AddFolderPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:controls="clr-namespace:Bookmarks.Controls"
+    Size="300, 200"
+    VerticalOptions="End"
+    IsLightDismissEnabled="True"
+    Color="Transparent"
+    >
+    <Frame
+        BackgroundColor="{DynamicResource PopupBackgroundColor}"
+        Padding="20"
+        HasShadow="True"
+        CornerRadius="20"
+        >
+
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Label
+                Text="Название папки:"
+                TextColor="{DynamicResource PopupForegroundColor}"
+                FontSize="26"
+                Margin="5,0,5,0"
+                HorizontalOptions="Start"
+                VerticalOptions="StartAndExpand"
+                />
+            <controls:CustomEntry
+                x:Name="textbox"
+                Margin="0,5,0,10"
+                Padding="20,12,20,7"
+                Style="{StaticResource EntryStyle}"
+                />
+            <Button
+                Text="Создать"
+                FontSize="20"
+                VerticalOptions="End"
+                HorizontalOptions="FillAndExpand"
+                Clicked="Button_Clicked"
+                />
+        </StackLayout>
+    </Frame>
+</xct:Popup>

@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Bookmarks.Views.BookmarksPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Bookmarks.Converters"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    >
+    <ContentPage.Resources>
+        <converters:IconLoadUriConverter x:Key="IconLoadUriConverter" />
+    </ContentPage.Resources>
+    <NavigationPage.TitleView>
+        <Grid>
+            <Label
+                Text="{Binding Folder.Name}"
+                TextColor="White"
+                FontSize="20"
+                VerticalOptions="Center"
+                />
+            <Button
+                Text="+"
+                FontSize="25"
+                Margin="5"
+                Padding="5,5,5,6"
+                HorizontalOptions="End"
+                CornerRadius="100"
+                MinimumWidthRequest="10"
+                WidthRequest="50"
+                Clicked="CreateBookmarkButton_Clicked"
+                />
+        </Grid>
+    </NavigationPage.TitleView>
+    <Grid>
+        <ListView
+            x:Name="listview"
+            BackgroundColor="Transparent"
+            SelectionMode="None"
+            HasUnevenRows="True"
+            SeparatorVisibility="None"
+            CachingStrategy="RetainElement"
+            ItemTapped="Listview_ItemTapped"
+            >
+            <ListView.Header>
+                <Grid
+                    BackgroundColor="{DynamicResource MainColor}"
+                    Padding="20,10"
+                    >
+                    <Label
+                        Text="{Binding Folder.Description}"
+                        TextColor="White"
+                        LineBreakMode="WordWrap"
+                        >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OpenFolderMenu_Click" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame
+                            BackgroundColor="{DynamicResource ListViewBackgroundColor}"
+                            Margin="10,13,10,3"
+                            Padding="0"
+                            CornerRadius="12"
+                            >
+                            <Grid
+                                x:Name="container"
+                                Margin="10"
+                                >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="40" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label
+                                    Text="{Binding Name}"
+                                    TextColor="{DynamicResource PageForegroundColor}"
+                                    FontSize="16"
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    VerticalOptions="Center"
+                                    InputTransparent="True"
+                                    LineBreakMode="WordWrap"
+                                    />
+
+                                <Frame
+                                    x:Name="frame"
+                                    BackgroundColor="Transparent"
+                                    Margin="0"
+                                    Padding="0"
+                                    InputTransparent="True"
+                                    VerticalOptions="Center"
+                                    CornerRadius="10"
+                                    HeightRequest="60"
+                                    >
+                                    <ffimageloading:CachedImage
+                                        Source="{Binding Url, Converter={StaticResource IconLoadUriConverter}}"
+                                        Aspect="Fill"
+                                        LoadingPlaceholder="bookmark.png"
+                                        />
+                                </Frame>
+
+                                <Button
+                                    Text="⠸"
+                                    TextColor="{DynamicResource ButtonBackgroundColor}"
+                                    BackgroundColor="{DynamicResource ListViewBackgroundColor}"
+                                    FontSize="25"
+                                    Grid.Column="2"
+                                    Margin="0"
+                                    Padding="-10,-20,-15,-20"
+                                    MinimumHeightRequest="0"
+                                    MinimumWidthRequest="0"
+                                    Clicked="OpenMenu_Click"
+                                    />
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>

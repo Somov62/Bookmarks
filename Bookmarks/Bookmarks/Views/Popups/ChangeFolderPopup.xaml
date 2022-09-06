@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup
+    x:Class="Bookmarks.Views.Popups.ChangeFolderPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Size="300, 370"
+    VerticalOptions="Center"
+    Color="Transparent"
+    >
+    <Frame
+        BackgroundColor="{DynamicResource PopupBackgroundColor}"
+        Padding="20"
+        HasShadow="True"
+        CornerRadius="20"
+        >
+
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Label
+                Text="Переместить в:"
+                TextColor="{DynamicResource PopupForegroundColor}"
+                FontSize="20"
+                Margin="10,0,5,0"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="Start"
+                VerticalOptions="StartAndExpand"
+                />
+            <ListView
+                x:Name="listview"
+                BackgroundColor="Transparent"
+                VerticalScrollBarVisibility="Never"
+                ItemsSource="{Binding BindCollection}"
+                SelectionMode="None"
+                HasUnevenRows="True"
+                SeparatorVisibility="None"
+                CachingStrategy="RetainElement"
+                >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="10,5">
+
+                                <Button
+                                    Text="{Binding Name}"
+                                    TextColor="{DynamicResource PopupForegroundColor}"
+                                    BackgroundColor="{DynamicResource PopupBackgroundColor}"
+                                    BorderColor="{DynamicResource MainColor}"
+                                    FontSize="17"
+                                    BorderWidth="3"
+                                    HorizontalOptions="FillAndExpand"
+                                    Clicked="Button_Clicked"
+                                    />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </Frame>
+</xct:Popup>

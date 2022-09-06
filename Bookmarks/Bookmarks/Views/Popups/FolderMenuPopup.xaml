@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup
+    x:Class="Bookmarks.Views.Popups.FolderMenuPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:controls="clr-namespace:Bookmarks.Controls"
+    Size="300, 400"
+    VerticalOptions="Center"
+    Color="Transparent"
+    >
+    <Frame
+        BackgroundColor="{DynamicResource PopupBackgroundColor}"
+        Padding="20"
+        HasShadow="True"
+        CornerRadius="20"
+        >
+
+        <StackLayout VerticalOptions="FillAndExpand">
+            <StackLayout
+                x:Name="folderBinding"
+                VerticalOptions="StartAndExpand"
+                >
+
+                <Label
+                    Text="Название папки:"
+                    TextColor="{DynamicResource PopupForegroundColor}"
+                    FontSize="26"
+                    Margin="5,0,5,0"
+                    HorizontalOptions="Start"
+                    VerticalOptions="StartAndExpand"
+                    />
+                <controls:CustomEntry
+                    x:Name="txtFolderName"
+                    Text="{Binding Name, Mode=TwoWay}"
+                    Placeholder="без имени никуда"
+                    Style="{StaticResource EntryStyle}"
+                    />
+                <Label
+                    Text="Описание:"
+                    TextColor="{DynamicResource PopupForegroundColor}"
+                    FontSize="26"
+                    Margin="5,0,5,0"
+                    HorizontalOptions="Start"
+                    VerticalOptions="StartAndExpand"
+                    />
+                <controls:CustomEntry
+                    x:Name="txtFolderDescription"
+                    Text="{Binding Description, Mode=TwoWay}"
+                    HeightRequest="80"
+                    AutoSize="TextChanges"
+                    Style="{StaticResource EntryStyle}"
+                    />
+            </StackLayout>
+
+            <Button
+                Text="Сохранить"
+                FontSize="20"
+                VerticalOptions="End"
+                HorizontalOptions="FillAndExpand"
+                Clicked="Save_Clicked"
+                />
+
+            <Button
+                Text="Удалить папку"
+                BackgroundColor="{DynamicResource ButtonDeleteColor}"
+                FontSize="20"
+                Margin="0,5,0,5"
+                VerticalOptions="End"
+                HorizontalOptions="FillAndExpand"
+                Clicked="Delete_Click"
+                BindingContext="{Binding Source={Reference folderBinding}, Path=BindingContext}"
+                >
+                <Button.Triggers>
+                    <DataTrigger
+                        TargetType="Button"
+                        Binding="{Binding IsServiceFolder}"
+                        Value="true"
+                        >
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+        </StackLayout>
+    </Frame>
+</xct:Popup>

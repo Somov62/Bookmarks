@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Bookmarks.Views.FoldersPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Bookmarks.Converters"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Title="Folders"
+    BackgroundColor="{DynamicResource PageBackgroundColor}"
+    >
+    <NavigationPage.TitleView>
+        <Frame
+            BackgroundColor="Transparent"
+            Margin="0"
+            Padding="0"
+            HasShadow="True"
+            >
+            <Grid>
+                <Label
+                    Text="Папки закладок"
+                    TextColor="White"
+                    FontSize="25"
+                    VerticalOptions="Center"
+                    />
+                <StackLayout
+                    HorizontalOptions="End"
+                    Orientation="Horizontal"
+                    >
+
+                    <Button
+                        Text="Меню"
+                        TextColor="White"
+                        BackgroundColor="{DynamicResource MainColor}"
+                        FontSize="20"
+                        Margin="5"
+                        Padding="5,5,5,6"
+                        MinimumWidthRequest="10"
+                        Clicked="OpenMenuButton_Clicked"
+                        />
+                    <Button
+                        Text="+"
+                        TextColor="White"
+                        BackgroundColor="{DynamicResource MainColor}"
+                        FontSize="25"
+                        Margin="5"
+                        Padding="5,5,5,6"
+                        HorizontalOptions="End"
+                        CornerRadius="100"
+                        MinimumWidthRequest="10"
+                        WidthRequest="50"
+                        Clicked="CreateFolderButton_Clicked"
+                        />
+                </StackLayout>
+            </Grid>
+        </Frame>
+    </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <converters:FolderNameConverter x:Key="FolderNameConverter" />
+        <converters:FolderNameSizeConverter x:Key="FolderNameSizeConverter" />
+        <converters:FolderColorConverter x:Key="FolderColorConverter" />
+    </ContentPage.Resources>
+    <Grid>
+        <ListView
+            x:Name="listview"
+            SelectionMode="None"
+            ItemsSource="{Binding FoldersList}"
+            HasUnevenRows="True"
+            SeparatorVisibility="None"
+            >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame
+                            Margin="10,18,10,3"
+                            Padding="0"
+                            CornerRadius="12"
+                            >
+                            <Grid>
+                                <Grid
+                                    xct:TouchEffect.NativeAnimationBorderless="False"
+                                    xct:TouchEffect.NormalBackgroundColor="{DynamicResource ListViewBackgroundColor}"
+                                    xct:TouchEffect.PressedBackgroundColor="{DynamicResource ListViewPressedBackgroundColor}"
+                                    xct:TouchEffect.LongPressDuration="500"
+                                    xct:TouchEffect.PressedScale="1"
+                                    xct:TouchEffect.NativeAnimation="False"
+                                    xct:TouchEffect.AnimationDuration="100"
+                                    xct:TouchEffect.Command="{Binding OpenFolderCommand}"
+                                    xct:TouchEffect.CommandParameter="{Binding Source={Reference container}, Path=BindingContext}"
+                                    xct:TouchEffect.LongPressCommand="{Binding OpenMenuCommand}"
+                                    xct:TouchEffect.LongPressCommandParameter="{Binding Source={Reference container}, Path=BindingContext}"
+                                    xct:TouchEffect.AnimationEasing="{x:Static Easing.CubicInOut}"
+                                    BindingContext="{Binding Source={Reference listview}, Path=BindingContext}"
+                                    />
+                                <Grid
+                                    x:Name="container"
+                                    BackgroundColor="Transparent"
+                                    Margin="10,15"
+                                    >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="90" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame
+                                        x:Name="frame"
+                                        BackgroundColor="{Binding Name, Converter={StaticResource FolderColorConverter}}"
+                                        Margin="0"
+                                        Padding="0"
+                                        InputTransparent="True"
+                                        VerticalOptions="Center"
+                                        CornerRadius="10"
+                                        HeightRequest="{Binding Source={x:Reference frame}, Path=Width}"
+                                        >
+                                        <Label
+                                            Text="{Binding Name, Converter={StaticResource FolderNameConverter}}"
+                                            TextColor="White"
+                                            FontSize="{Binding Source={x:Reference frame}, Path=Height, Converter={StaticResource FolderNameSizeConverter}}"
+                                            FontAttributes="None"
+                                            InputTransparent="True"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            />
+                                    </Frame>
+
+                                    <StackLayout
+                                        x:Name="stackPanel"
+                                        Grid.Column="1"
+                                        Padding="5,0"
+                                        VerticalOptions="CenterAndExpand"
+                                        Spacing="5"
+                                        InputTransparent="True"
+                                        >
+                                        <StackLayout.Resources>
+                                            <Style TargetType="Label">
+                                                <Setter Property="FontSize" Value="17" />
+                                                <Setter Property="InputTransparent" Value="true" />
+                                                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                                                <Setter Property="LineBreakMode" Value="WordWrap" />
+                                                <Setter Property="TextColor" Value="{DynamicResource ListViewForegroundSecondaryColor}" />
+                                            </Style>
+                                        </StackLayout.Resources>
+                                        <Label
+                                            Text="{Binding Name}"
+                                            TextColor="{DynamicResource ListViewForegroundColor}"
+                                            FontSize="24"
+                                            Margin="0,0,0,0"
+                                            />
+                                        <Label Text="{Binding Description}" />
+                                        <Label Text="{Binding Bookmarks.Count, StringFormat='Количество: {0}'}" />
+                                    </StackLayout>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+
+</ContentPage>

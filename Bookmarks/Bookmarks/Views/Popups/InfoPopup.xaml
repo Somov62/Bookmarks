@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup
+    x:Class="Bookmarks.Views.Popups.InfoPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Size="300, 250"
+    VerticalOptions="End"
+    Color="Transparent"
+    >
+    <Frame
+        BackgroundColor="{DynamicResource PopupBackgroundColor}"
+        Padding="20"
+        HasShadow="True"
+        CornerRadius="20"
+        >
+
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Label
+                x:Name="txtInfo"
+                TextColor="{DynamicResource PopupForegroundColor}"
+                FontSize="20"
+                Margin="5,0,5,0"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="Start"
+                VerticalOptions="StartAndExpand"
+                />
+
+            <Button
+                Text="Хорошо"
+                FontSize="20"
+                VerticalOptions="End"
+                HorizontalOptions="FillAndExpand"
+                Clicked="Button_Clicked"
+                />
+        </StackLayout>
+    </Frame>
+</xct:Popup>
