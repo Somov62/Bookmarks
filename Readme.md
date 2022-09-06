@@ -1,5 +1,5 @@
 <center>
-  <img src="screenshots/Icon.png" alt="icon" width="200" />
+  <img src="Screenshots/Icon.png" alt="icon" width="200" />
   <h3></h3>
   <img src="https://img.shields.io/static/v1?label=Android&message=5.1%2B&color=yellowgreen&style=flat" alt="icon" margin-top="20" />
       <img src="https://img.shields.io/static/v1?label=Version&message=1.0.0+&color=green&style=flat" alt="icon"/>
