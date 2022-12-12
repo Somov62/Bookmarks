@@ -18,6 +18,9 @@ namespace Bookmarks.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
+            DeviceLocalFileProvider provider = new DeviceLocalFileProvider();
+            provider.SaveFileToDisk(Assets.Open("support.pdf"), "support.pdf");
+
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
             FFImageLoading.Forms.Platform.CachedImageRenderer.InitImageViewHandler();
             Context = this;

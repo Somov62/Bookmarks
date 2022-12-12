@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:converters="clr-namespace:Bookmarks.Converters"
-    Size="300, 270"
+    Size="300, 365"
     Color="Transparent"
     >
     <xct:Popup.Resources>
@@ -75,6 +75,23 @@
                 Clicked="OpenImport_Click"
                 />
 
+            <Label
+                Text="Обучение:"
+                TextColor="{DynamicResource PopupForegroundColor}"
+                FontSize="20"
+                Margin="5,10,5,0"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                />
+
+            <Button
+                Text="Справка"
+                FontSize="20"
+                VerticalOptions="End"
+                HorizontalOptions="FillAndExpand"
+                Clicked="OpenSupport_Click"
+                />
         </StackLayout>
     </Frame>
 </xct:Popup>

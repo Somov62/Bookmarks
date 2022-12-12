@@ -16,13 +16,18 @@ namespace Bookmarks.Views.Popups
 
         private async void OpenImport_Click(object sender, EventArgs e)
         {
-            Dismiss(true);
+            Dismiss("import");
+        }
+        
+        private async void OpenSupport_Click(object sender, EventArgs e)
+        {
+            Dismiss("support");
         }
 
         private void ChangeTheme_Click(object sender, EventArgs e)
         {
             _context.ChangeThemeCommand.Execute(null);
-            Dismiss(false);
+            Dismiss("themes");
         }
     }
 }

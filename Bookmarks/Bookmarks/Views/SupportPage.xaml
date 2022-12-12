@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Bookmarks.Views.SupportPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    Title="Справка"
+    BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <ScrollView>
+        <StackLayout Margin="20">
+            <StackLayout.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="TextColor" Value="{DynamicResource PageForegroundColor}" />
+                </Style>
+            </StackLayout.Resources>
+            <Label
+                Text="Обучающие материалы и документы"
+                FontSize="25"
+                FontAttributes="Bold" />
+            <Label
+                Text="1. Руководство оператора"
+                FontSize="22"
+                Margin="0,20,0,0" />
+
+            <Label Margin="20,10">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="Стандартизированный " FontSize="18" />
+                            <Span
+                                Text="документ"
+                                TextColor="{DynamicResource BarBackgroundColor}"
+                                FontSize="18"
+                                TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OpenDocumentButton_Click" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                            <Span Text=" с полным изложением информации о программе" FontSize="18" />
+
+                        </FormattedString.Spans>
+                    </FormattedString>
+
+                </Label.FormattedText>
+            </Label>
+
+            <Label Text="2. Обучающие материалы" FontSize="22" />
+
+
+            <StackLayout Margin="10,10" Spacing="20">
+                <Frame
+                    BackgroundColor="{DynamicResource BarBackgroundColor}"
+                    Padding="0"
+                    CornerRadius="20">
+                    <extensions:Expander>
+                        <extensions:Expander.Header>
+                            <Label
+                                Text="Работа с папками"
+                                TextColor="{DynamicResource BarTextColor}"
+                                FontSize="18"
+                                Margin="20,10" />
+                        </extensions:Expander.Header>
+                        <WebView
+                            x:Name="wb1"
+                            HeightRequest="665"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="2,0,2,20" />
+                    </extensions:Expander>
+                </Frame>
+
+                <Frame
+                    BackgroundColor="{DynamicResource BarBackgroundColor}"
+                    Padding="0"
+                    CornerRadius="20">
+                    <extensions:Expander>
+                        <extensions:Expander.Header>
+                            <Label
+                                Text="Работа с закладками"
+                                TextColor="{DynamicResource BarTextColor}"
+                                FontSize="18"
+                                Margin="20,10" />
+                        </extensions:Expander.Header>
+                        <WebView
+                            x:Name="wb2"
+                            HeightRequest="665"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="2,0,2,20" />
+                    </extensions:Expander>
+                </Frame>
+
+                <Frame
+                    BackgroundColor="{DynamicResource BarBackgroundColor}"
+                    Padding="0"
+                    CornerRadius="20">
+                    <extensions:Expander>
+                        <extensions:Expander.Header>
+                            <Label
+                                Text="Перемещение закладок"
+                                TextColor="{DynamicResource BarTextColor}"
+                                FontSize="18"
+                                Margin="20,10" />
+                        </extensions:Expander.Header>
+                        <WebView
+                            x:Name="wb3"
+                            HeightRequest="665"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="2,0,2,20" />
+                    </extensions:Expander>
+                </Frame>
+
+                <Frame
+                    BackgroundColor="{DynamicResource BarBackgroundColor}"
+                    Padding="0"
+                    CornerRadius="20">
+                    <extensions:Expander>
+                        <extensions:Expander.Header>
+                            <Label
+                                Text="Цветовое оформление"
+                                TextColor="{DynamicResource BarTextColor}"
+                                FontSize="18"
+                                Margin="20,10" />
+                        </extensions:Expander.Header>
+                        <WebView
+                            x:Name="wb4"
+                            HeightRequest="665"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="2,0,2,20" />
+                    </extensions:Expander>
+                </Frame>
+
+                <Frame
+                    BackgroundColor="{DynamicResource BarBackgroundColor}"
+                    Padding="0"
+                    CornerRadius="20">
+                    <extensions:Expander>
+                        <extensions:Expander.Header>
+                            <Label
+                                Text="Импорт данных"
+                                TextColor="{DynamicResource BarTextColor}"
+                                FontSize="18"
+                                Margin="20,10" />
+                        </extensions:Expander.Header>
+                        <WebView
+                            x:Name="wb5"
+                            HeightRequest="665"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="2,0,2,20" />
+                    </extensions:Expander>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

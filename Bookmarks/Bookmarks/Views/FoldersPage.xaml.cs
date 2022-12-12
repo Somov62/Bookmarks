@@ -45,11 +45,16 @@ namespace Bookmarks.Views
 
         private async void OpenMenuButton_Clicked(object sender, EventArgs e)
         {
-            bool? result = (bool?) await Navigation.ShowPopupAsync(new Popups.AppMenuPopup());
+            string result = (string) await Navigation.ShowPopupAsync(new Popups.AppMenuPopup());
             if (result == null) return;
-            if (result == true)
+            if (result == "import")
             {
                 await Navigation.PushAsync(new ImportPage());
+                return;
+            }
+            if (result == "support")
+            {
+                await Navigation.PushAsync(new SupportPage());
                 return;
             }
             OpenMenuButton_Clicked(this, null);
